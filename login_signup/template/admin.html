@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="{% static 'css/admin.css' %}" rel="stylesheet">
+    <title>Admin panel</title>
+</head>
+<body>
+    <section id="menu">
+        <div class="logo">
+            <h2>Admin Panel </h2>
+        </div>
+ 
+        <div class="items">
+           
+            <li><ion-icon name="people-outline"></ion-icon> <a href="{% url 'home' %}" style="color: rgb(221, 238, 238);"> HOME</a></li>
+            <li><ion-icon name="settings-outline"></ion-icon><a href="{% url 'adduser' %}">ADD USER</a></li>
+             <li><ion-icon name="search-outline"></ion-icon><a href="{% url 'search_page' %}">SEARCH</a></li>
+             <li><ion-icon name="log-out-outline"></ion-icon><a href="{% url 'logout' %}">logout</a></li>
+            
+        </div>
+    </section>
+ 
+    <section id="interface">
+        <!-- <div class="navigation">
+            <div class="n1">
+                <div>
+                    <ion-icon id="menu-btn" name="menu-outline"></ion-icon>
+                </div>
+                <div class="search">
+                    <ion-icon name="search-outline"></ion-icon>
+                    <input type="text" placeholder="Search">
+                </div>
+            </div>
+            <div class="profile">
+                <ion-icon name="notifications-outline"></ion-icon>
+                <ion-icon name="person-outline"></ion-icon>
+               </div>
+        </div> -->
+ 
+        <h3 class="page_name">Dashboard</h3>
+<!--  
+        <div class="values" >
+            <div class="val-box"style="border: 2px solid red bg-white">
+                <ion-icon name="add-circle-outline" class="color-white" style="color: aliceblue;"></ion-icon>
+                <div>
+                    <h3>
+                        <a  style="font-size:large; color: rgb(48, 155, 165);" href="{% url 'adduser' %}"> Add New User</a>
+                     </h3>
+                </div>
+            </div> -->
+            <!-- <div class="val-box">
+                <ion-icon name="arrow-up-circle-outline"></ion-icon>
+                <div>
+                    <h3>Update User</h3>
+                </div>
+            </div> -->
+            <!-- <div class="val-box">
+                <ion-icon name="trash-outline"></ion-icon>
+                <div>
+                    <h3>Delete User</h3>
+                </div> -->
+            <!-- </div>
+            <div class="val-box">
+                <ion-icon name="create-outline"></ion-icon>
+                <div>
+                    <h3>Number of Users</h3>
+                </div>
+            </div>
+        </div> -->
+ 
+        <div class="board">
+            <table width="100%">
+                <thead>
+                    <tr>
+                        <td><b>Id</b></td>
+                        <td><b>First Name</b></td>
+                        <td><b>Last Name</b></td>
+                        <td><b>email</b></td>
+                        <td><b>password</b></td>
+                        <td><b>status</b></td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in users %}
+                    <tr>
+                        <td class="people">
+                            <div class="people-de">
+                                <h5>{{ i.id }}</h5>
+                            </div>
+                        </td>
+                        <td class="people">
+                            <div class="people-de">
+                                <h5>{{ i.First_name }}</h5>
+                            </div>
+                        </td>
+                        <td class="people">
+                            <div class="people-de">
+                                <h5>{{ i.Last_name }}</h5>
+                            </div>
+                        </td>
+                        <td class="email">
+                            <h5>{{i.Email_address}}</h5>
+                        </td>
+                        <td class="pass">
+                            <h5>{{i.Password}}</h5>
+                        </td>
+
+                        <td class="edit"><a  class="text-danger" href='/delete_user/{{i.id}}'>delete</a></td>
+                        <td class="edit "><a class="text-success" href='/update_user/{{i.id}}'>update</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+ 
+ 
+ <script>
+    if (window.replaceState){
+    widow.history.replaceState(null,null,window.location.href)
+  }
+
+ </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

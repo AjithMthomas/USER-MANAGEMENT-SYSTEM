@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="{% static 'css/admin.css' %}" rel="stylesheet">
+    <title>Update User</title>
+ 
+</head>
+<body>
+    <section id="menu">
+        <div class="logo">
+            <a  class="logotag text-succes"><h2>UPDATE PANEL</h2></a>
+        </div>
+ 
+        <div class="items">
+            <!-- <li><ion-icon name="pie-chart-outline"></ion-icon><a href="#">Dashboard</a></li> -->
+            <li><ion-icon name="people-outline"></ion-icon> <a href="{% url 'home' %}" style="color: rgb(221, 238, 238);"> HOME</a></li>
+            <li><ion-icon name="people-outline"></ion-icon><a href="{% url 'admin_p' %}">ADMIN PANEL</a></li>
+            <!-- <li><ion-icon name="settings-outline"></ion-icon><a href="#">Settings</a></li>
+            <li><ion-icon name="help-circle-outline"></ion-icon><a href="#">Help</a></li> -->
+           
+        </div>
+    </section>
+    <section id="interface">
+        <!-- <div class="navigation">
+            <div class="n1">
+                <div>
+                    <ion-icon id="menu-btn" name="menu-outline"></ion-icon>
+                </div>
+                <div class="search">
+                    <ion-icon name="search-outline"></ion-icon>
+                    <input type="text" placeholder="Search">
+                </div>
+            </div>
+            <div class="profile">
+                <ion-icon name="notifications-outline"></ion-icon>
+                <ion-icon name="person-outline"></ion-icon>
+                <h6>username</h6>
+            </div> -->
+        </div>
+ 
+        <h3 class="page_name" >Update Users</h3>
+ 
+        <div class="wrapper" style="height: 75vh;">
+            <h2>Update user here</h2>
+            <form action="/update_form/{{users.id}}" method="POST">
+                {% csrf_token %}
+                <p style="text-align: left;padding-left: 9rem;">First Name<br></p>
+                <input type="text" placeholder="username" name="fname" value="{{users.First_name}}" required><br>
+                <p style="text-align: left;padding-left: 9rem;">Last Name<br></p>
+                <input type="text" placeholder="username" name="lname" value="{{users.Last_name}}" required><br>
+                <p style="text-align: left;padding-left: 9rem;">Email<br></p>
+                <input type="email" placeholder="email" name="email" value="{{users.Email_address}}" required><br>
+                <p style="text-align: left;padding-left: 9rem;">Password<br></p>
+                <input type="text" placeholder="password" name="password" value="{{users.Password}}" required><br>
+                <p style="text-align: left;padding-left: 9rem;">Re-Ener Password<br></p>
+                <input type="password" placeholder="Re-Enter password" name="password" required><br>
+                <div style="align-items: center;">
+                    
+                    <button type="submit" style="background-color: green; padding: 0.5rem;border-radius: 0.5rem; color: aliceblue;">Submit</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <script>
+        if (window.replaceState){
+    widow.history.replaceState(null,null,window.location.href)
+  }
+
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
